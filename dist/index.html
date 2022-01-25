@@ -10,9 +10,37 @@
 <script defer src="main.bundle.js"></script></head>
 
 <body>
-    <div class="root">
-        <h1>Here from html</h1>
-    </div>
+    <header>
+        <h1>Leaderboard</h1>
+    </header>
+    <main>
+        <section>
+            <div class="title-recent-score">
+                <h2>Recent score</h2>
+                <button type="button">Refresh</button>
+            </div>
+            <div class="list-players"></div>
+        </section>
+        <section>
+            <h2>Add your score</h2>
+            <form class="form-input">
+                <ul>
+                    <li>
+                        <input type="text" name="name" placeholder="Your Name" required />
+                    </li>
+                    <li>
+                        <input type="number" name="score" placeholder="Your score" required />
+                    </li>
+                    <li>
+                        <button type="submit">Submit</button>
+                    </li>
+                </ul>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <span>Copyright</span>
+    </footer>
 </body>
 
 </html>
