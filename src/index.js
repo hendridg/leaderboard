@@ -1,11 +1,24 @@
+import Players from './modules/index.js';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
-  element.innerHTML = 'Webpack config';
-  return element;
+const form = document.querySelector('.form-input');
+const [name, score] = form.elements;
+const objPlayers = new Players();
+
+if (localStorage.savedPlayers) {
+  objPlayers.players = JSON.parse(localStorage.getItem('savedPlayers'));
 }
 
-const root = document.querySelector('.root');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const newPlayer = {
+    name: name.value,
+    score: score.value,
+  };
+  objPlayers.addPlayer(newPlayer);
+  name.value = '';
+  score.value = '';
+});
 
-root.appendChild(component());
+objPlayers.displayPlayers();
+objPlayers.populateFields();
