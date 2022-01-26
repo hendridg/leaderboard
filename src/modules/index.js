@@ -1,8 +1,8 @@
 const listPlayers = document.querySelector('.list-players');
 
 const Players = class {
-  constructor(name, score) {
-    this.name = name;
+  constructor(user, score) {
+    this.user = user;
     this.score = score;
     this.players = [];
   }
@@ -30,7 +30,7 @@ const Players = class {
         const playerDiv = document.createElement('tr');
         const elementPlayer = document.createElement('td');
 
-        elementPlayer.textContent = `${player.name}: ${player.score}`;
+        elementPlayer.textContent = `${player.user}: ${player.score}`;
 
         playerDiv.classList.add('player-container');
         playerDiv.appendChild(elementPlayer);
