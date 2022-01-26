@@ -15,7 +15,7 @@ if (localStorage.savedPlayers) {
   objPlayers.players = JSON.parse(localStorage.getItem('savedPlayers'));
 }
 
-async function keyNewGameAPIs() {
+const keyNewGameAPIs = async () => {
   const response = await fetch(urlNewGame, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
@@ -28,20 +28,20 @@ async function keyNewGameAPIs() {
   });
   const data = await response.json();
   return data.result.slice(14, 34);
-}
+};
 
 const keyGame = keyNewGameAPIs();
 
-async function getAPIs() {
+const getAPIs = async () => {
   const response = await fetch(`
     https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${keyGame}/scores`);
   const data = await response.json();
   objPlayers.players = data.result;
   objPlayers.displayPlayers();
   return data.result;
-}
+};
 
-async function postPlayer(newPlayer) {
+const postPlayer = async (newPlayer) => {
   const response = await fetch(
     `
   https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${keyGame}/scores`,
@@ -58,7 +58,7 @@ async function postPlayer(newPlayer) {
   );
   const data = await response.json();
   return data.result;
-}
+};
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
