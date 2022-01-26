@@ -5,6 +5,8 @@ import './style.css';
 const form = document.querySelector('.form-input');
 const btnRefresh = document.querySelector('.btn-refresh');
 const responsePost = document.querySelector('.response-post');
+const listPlayers = document.querySelector('.list-players');
+const spinner = document.querySelector('.spinner');
 const [name, score] = form.elements;
 const objPlayers = new Players();
 const urlNewGame = `
@@ -33,10 +35,14 @@ const keyNewGameAPIs = async () => {
 const keyGame = keyNewGameAPIs();
 
 const getAPIs = async () => {
+  listPlayers.classList.add('hidden');
+  spinner.classList.remove('hidden');
   const response = await fetch(`
     https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${keyGame}/scores`);
   const data = await response.json();
   objPlayers.players = data.result;
+  listPlayers.classList.remove('hidden');
+  spinner.classList.add('hidden');
   objPlayers.displayPlayers();
   return data.result;
 };
