@@ -2,6 +2,7 @@
 import Players from './modules/index.js';
 import './style.css';
 
+let keyGame;
 const form = document.querySelector('.form-input');
 const btnRefresh = document.querySelector('.btn-refresh');
 const responsePost = document.querySelector('.response-post');
@@ -9,7 +10,6 @@ const listPlayers = document.querySelector('.list-players');
 const spinner = document.querySelector('.spinner');
 const [name, score] = form.elements;
 const objPlayers = new Players();
-var keyGame;
 const urlNewGame = `
   https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/`;
 const nameGame = { name: "Hendrid's cool name" };
