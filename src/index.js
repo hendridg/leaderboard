@@ -9,6 +9,7 @@ const listPlayers = document.querySelector('.list-players');
 const spinner = document.querySelector('.spinner');
 const [name, score] = form.elements;
 const objPlayers = new Players();
+var keyGame;
 const urlNewGame = `
   https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/`;
 const nameGame = { name: "Hendrid's cool name" };
@@ -32,7 +33,15 @@ const keyNewGameAPIs = async () => {
   return data.result.slice(14, 34);
 };
 
-const keyGame = keyNewGameAPIs();
+if (localStorage.keyGame) {
+  keyGame = localStorage.getItem('keyGame');
+} else {
+  const loadKey = async () => {
+    keyGame = await keyNewGameAPIs();
+    localStorage.setItem('keyGame', keyGame);
+  };
+  loadKey();
+}
 
 const getAPIs = async () => {
   listPlayers.classList.add('hidden');
