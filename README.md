@@ -22,7 +22,7 @@ You will also see any lint errors in the console.
 
 ## Built With
 
-- HTML, CSS, JavaScriptsm, Npm and Webpack
+- HTML, CSS, JavaScript, Npm and Webpack
 
 ## Getting Started
 
