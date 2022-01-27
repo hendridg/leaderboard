@@ -2,6 +2,7 @@
 import Players from './modules/index.js';
 import './style.css';
 
+let keyGame;
 const form = document.querySelector('.form-input');
 const btnRefresh = document.querySelector('.btn-refresh');
 const responsePost = document.querySelector('.response-post');
@@ -32,7 +33,15 @@ const keyNewGameAPIs = async () => {
   return data.result.slice(14, 34);
 };
 
-const keyGame = keyNewGameAPIs();
+if (localStorage.keyGame) {
+  keyGame = localStorage.getItem('keyGame');
+} else {
+  const loadKey = async () => {
+    keyGame = await keyNewGameAPIs();
+    localStorage.setItem('keyGame', keyGame);
+  };
+  loadKey();
+}
 
 const getAPIs = async () => {
   listPlayers.classList.add('hidden');
